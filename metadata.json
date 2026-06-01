@@ -1,0 +1,6 @@
+{
+  "name": "地牢冒险游戏",
+  "description": "一个包含地牢路线、职业人物选择、层级划分、装备商城与成就奖杯系统的策略卡牌地牢冒险游戏。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
