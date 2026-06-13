@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+export type GameDifficulty = 'NORMAL' | 'HARD' | 'APOCALYPSE' | 'NIGHTMARE';
+
 export enum CharacterClass {
   WARRIOR = 'WARRIOR',
   MAGE = 'MAGE',
@@ -22,6 +24,12 @@ export interface PlayerStats {
   expToNextLevel: number;
   gold: number;
   title: string; // 阶级/称号 e.g. 青铜冒险者, 白银先锋, 黄金战神...
+  activatedTalents?: string[]; // 激活的誓约命印 id 列表
+  soulShards?: number; // 魂石碎片,用于洗炼和铁匠铺升级
+  ascendedClass?: string; // 觉醒转职称号, e.g., '圣骑士', '残虐狂战', '混沌炼金'
+  difficulty?: GameDifficulty;
+  deck?: string[]; // 玩家当前的卡组/技能池
+  starterSchool?: string; // 玩家初始流派选择
 }
 
 export enum ItemTier {
@@ -52,6 +60,8 @@ export interface Item {
   icon: string;
   isEquipped?: boolean;
   instanceId?: string;
+  forgeLevel?: number; // 铁匠强化等级 (+1, +2, +3)
+  setName?: string; // 所属套装名, e.g. '亡誓骑士', '先锋合金', '深渊黑焰', '造物神话'
 }
 
 export enum NodeType {
@@ -61,7 +71,17 @@ export enum NodeType {
   BOSS = 'BOSS',
   SHOP = 'SHOP',
   EVENT = 'EVENT',
-  TREASURE = 'TREASURE'
+  TREASURE = 'TREASURE',
+  MIST_RUINS = 'MIST_RUINS',
+  WANDERING_MERCHANT = 'WANDERING_MERCHANT',
+  CAGE_CHALLENGE = 'CAGE_CHALLENGE',
+  SOUL_ALTAR = 'SOUL_ALTAR',
+  SANCTUARY = 'SANCTUARY',
+  ARMORY = 'ARMORY',
+  MINE = 'MINE',
+  ABYSS = 'ABYSS',
+  MIRROR = 'MIRROR',
+  MIMIC = 'MIMIC'
 }
 
 export interface DungeonNode {
@@ -126,4 +146,5 @@ export interface GameState {
   goldSpent: number;
   monstersSlain: number;
   maxLevelReached: number;
+  activatedTalents?: string[];
 }
